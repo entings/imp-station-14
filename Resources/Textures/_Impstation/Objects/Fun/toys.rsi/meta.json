@@ -1,7 +1,7 @@
 ﻿{
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "minor, giant bear, jumbo gray, plushie hop, and plushie captain by crocodilecarousel (github). finfin, yarn noodles, fabric scrap salad, odds, iba by starlighthowls. gray plushie by tox. bug, dolls, and imp specific species plushies by Doop. imp plush by mqole, kodepiia plush by UndertaleSex",
+    "copyright": "minor, giant bear, jumbo gray, plushie hop, and plushie captain by crocodilecarousel (github). finfin, yarn noodles, fabric scrap salad, odds, iba by starlighthowls. gray plushie by tox. bug, dolls, and imp specific species plushies by Doop. imp plush by mqole, kodepiia plush by UndertaleSex. Fuzzbo by Entings (Github)",
     "size": {
         "x": 32,
         "y": 32
@@ -108,6 +108,34 @@
         },
         {
             "name": "plushie_finfin-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "plushie_fuzzbo_Blue",
+            "directions": 4
+        },
+        {
+            "name": "plushie_fuzzbo_Brown",
+            "directions": 4
+        },
+        {
+            "name": "plushie_fuzzbo_Gray",
+            "directions": 4
+        },
+        {
+            "name": "plushie_fuzzbo_Purple",
+            "directions": 4
+        },
+        {
+            "name": "plushie_fuzzbo_Tiger",
+            "directions": 4
+        },
+        {
+            "name": "plushie_fuzzbo_TreeFrog",
+            "directions": 4
+        },
+        {
+            "name": "plushie_fuzzbo_Skinned",
             "directions": 4
         },
         {
