@@ -13,7 +13,7 @@ public sealed partial class FoodComponent : Component
     public string Solution = "food";
 
     [DataField]
-    public SoundSpecifier UseSound = new SoundCollectionSpecifier("eating");
+    public SoundSpecifier UseSound = new SoundPathSpecifier("eating");
 
     [DataField]
     public List<EntProtoId> Trash = new();

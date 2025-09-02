@@ -28,48 +28,44 @@ public sealed class SelfHeadsetSystem : EntitySystem
     /// Used to give an entity access to radio channels when an Encryption Key is inserted, without the need for a headset.
     /// </summary>
 
-    private void OnKeysChanged(EntityUid uid, SelfHeadsetComponent component, ref EncryptionChannelsChangedEvent args)
+    private void OnKeysChanged(Entity<SelfHeadsetComponent> ent, ref EncryptionChannelsChangedEvent args)
     {
-        UpdateRadioChannels(uid, component, args.Component);
+        UpdateRadioChannels(ent, args.Component);
     }
 
-    private void UpdateRadioChannels(EntityUid uid, SelfHeadsetComponent component, EncryptionKeyHolderComponent? keyHolder = null)
+    private void UpdateRadioChannels(Entity<SelfHeadsetComponent> ent, EncryptionKeyHolderComponent? keyHolder = null)
     {
         {
-            if (!Resolve(uid, ref keyHolder))
+            if (!Resolve(ent, ref keyHolder))
                 return;
 
             if (keyHolder.Channels.Count == 0)
-                RemCompDeferred<ActiveRadioComponent>(uid);
+                RemCompDeferred<ActiveRadioComponent>(ent);
             else
-                EnsureComp<ActiveRadioComponent>(uid).Channels = new(keyHolder.Channels);
-        }
+                EnsureComp<ActiveRadioComponent>(ent).Channels = new(keyHolder.Channels);
 
-        {
-            if (!Resolve(uid, ref keyHolder))
+            if (!Resolve(ent, ref keyHolder))
                 return;
 
             if (keyHolder.Channels.Count == 0)
-                RemCompDeferred<IntrinsicRadioReceiverComponent>(uid);
+                RemCompDeferred<IntrinsicRadioReceiverComponent>(ent);
             else
-                EnsureComp<IntrinsicRadioReceiverComponent>(uid);
-        }
+                EnsureComp<IntrinsicRadioReceiverComponent>(ent);
 
-        {
-            if (!Resolve(uid, ref keyHolder))
+            if (!Resolve(ent, ref keyHolder))
                 return;
 
             if (keyHolder.Channels.Count == 0)
-                RemCompDeferred<IntrinsicRadioTransmitterComponent>(uid);
+                RemCompDeferred<IntrinsicRadioTransmitterComponent>(ent);
             else
-                EnsureComp<IntrinsicRadioTransmitterComponent>(uid).Channels = new(keyHolder.Channels);
+                EnsureComp<IntrinsicRadioTransmitterComponent>(ent).Channels = new(keyHolder.Channels);
         }
     }
 
     /// <summary>
     /// Disables radio when hit by an EMP.
     /// </summary>
-    private void OnEmpPulse(EntityUid uid, SelfHeadsetComponent component, ref EmpPulseEvent args)
+    private void OnEmpPulse(Entity<SelfHeadsetComponent> ent, ref EmpPulseEvent args)
     {
         {
             args.Affected = true;

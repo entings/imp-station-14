@@ -1091,17 +1091,17 @@
   - type: Sprite
     sprite: _Impstation/Objects/Fun/toys.rsi
     layers:
-    - state: plushie_fuzzbo_babyBlue
+    - state: plushie_fuzzbo_Blue
       map: [ "enum.DamageStateVisualLayers.Base" ]
   - type: RandomSprite
     available:
       - enum.DamageStateVisualLayers.Base:
-          plushie_fuzzbo_babyGray: ""
-          plushie_fuzzbo_babyTiger: ""
-          plushie_fuzzbo_babyTreeFrog: ""
-          plushie_fuzzbo_babyBrown: ""
-          plushie_fuzzbo_babyPurple: ""
-          plushie_fuzzbo_babyBlue: ""
+          plushie_fuzzbo_Gray: ""
+          plushie_fuzzbo_Tiger: ""
+          plushie_fuzzbo_TreeFrog: ""
+          plushie_fuzzbo_Brown: ""
+          plushie_fuzzbo_Purple: ""
+          plushie_fuzzbo_Blue: ""
   - type: Rotatable
   - type: EmitSoundOnLand
     sound:
@@ -1117,10 +1117,7 @@
     delay: 1.0
   - type: StealTarget
     stealGroup: Plushie
-  - type: Input
-    context: human
   - type: RelentlessPositivity
-  - type: BlockMovement
   - type: Emoting
   - type: BodyEmotes
     soundsId: GeneralBodyEmotes
@@ -1142,7 +1139,6 @@
   - type: Examiner
   - type: Fuzzbo
   - type: SelfHeadset
-    hidden: true
   - type: IntrinsicRadioReceiver
   - type: IntrinsicRadioTransmitter
   - type: ActiveRadio
