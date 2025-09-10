@@ -1,5 +1,9 @@
 using Robust.Shared.Prototypes;
 using Content.Shared.Radio;
+using Content.Shared.Chat;
+using Robust.Shared.Containers;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
 
 namespace Content.Server._Impstation.Radio.Components;
 
@@ -27,4 +31,17 @@ public sealed partial class SelfHeadsetComponent : Component
     /// </summary>
     [DataField]
     public HashSet<ProtoId<RadioChannelPrototype>> TransmitterAddedChannels = new();
+
+    [DataField("channels", customTypeSerializer: typeof(PrototypeIdHashSetSerializer<RadioChannelPrototype>))]
+    public HashSet<string> Channels = new();
+
+    /// <summary>
+    ///     This is the channel that will be used when using the default/department prefix (<see cref="SharedChatSystem.DefaultChannelKey"/>).
+    /// </summary>
+    [DataField("defaultChannel", customTypeSerializer: typeof(PrototypeIdSerializer<RadioChannelPrototype>))]
+    public string? DefaultChannel;
+
+    [ViewVariables]
+    public Container KeyContainer = default!;
+    public const string KeyContainerName = "key_slots";
 }

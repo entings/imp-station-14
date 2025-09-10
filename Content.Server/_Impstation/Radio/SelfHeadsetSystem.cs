@@ -1,18 +1,15 @@
 using Content.Server.Emp;
 using Content.Server._Impstation.Radio.Components;
 using Content.Server.Radio.Components;
-using Content.Shared.Interaction;
+using Robust.Shared.Containers;
+using Content.Shared.Examine;
 using Content.Shared.Radio;
 using Content.Shared.Radio.Components;
-using Robust.Shared.Audio.Systems;
-using Robust.Shared.Containers;
 
 namespace Content.Server._Impstation.Radio;
 
 public sealed class SelfHeadsetSystem : EntitySystem
 {
-
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
 
     public override void Initialize()
@@ -27,6 +24,42 @@ public sealed class SelfHeadsetSystem : EntitySystem
     /// <summary>
     /// Used to give an entity access to radio channels when an Encryption Key is inserted, without the need for a headset.
     /// </summary>
+
+    public void UpdateChannels(Entity<SelfHeadsetComponent> ent)
+    {
+        if (!ent.Comp.Initialized)
+            return;
+
+        ent.Comp.Channels.Clear();
+        ent.Comp.DefaultChannel = null;
+
+        foreach (var comp in ent.Comp.KeyContainer.ContainedEntities)
+        {
+            if (TryComp<SelfHeadsetComponent>(ent, out var key))
+            {
+                ent.Comp.Channels.UnionWith(key.Channels);
+                ent.Comp.DefaultChannel ??= key.DefaultChannel;
+            }
+        }
+
+        RaiseLocalEvent(ent, new EncryptionChannelsChangedEvent(ent));
+    }
+
+    private void OnStartup(Entity<SelfHeadsetComponent> ent, ComponentStartup args)
+    {
+        ent.Comp.KeyContainer = _container.EnsureContainer<Container>(ent, SelfHeadsetComponent.KeyContainerName);
+        UpdateChannels(ent);
+    }
+
+    private void OnExamine(Entity<SelfHeadsetComponent> ent, ref ExaminedEvent args)
+    {
+        if (ent.Comp.KeyContainer.ContainedEntities.Count == 0)
+            args.PushMarkup(Loc.GetString("encryption-keys-no-keys"));
+
+        if (ent.Comp.KeyContainer.ContainedEntities.Count > 0)
+            args.PushMarkup(Loc.GetString("encryption-keys-some-keys"));
+        return;
+    }
 
     private void OnKeysChanged(Entity<SelfHeadsetComponent> ent, ref EncryptionChannelsChangedEvent args)
     {

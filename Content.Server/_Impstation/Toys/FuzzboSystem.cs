@@ -23,7 +23,6 @@ public sealed class FuzzboSystem : EntitySystem
 
         SubscribeLocalEvent<FuzzboComponent, GotEmaggedEvent>(OnEmagged);
         SubscribeLocalEvent<FuzzboComponent, InteractUsingEvent>(OnInteractUsing);
-        SubscribeLocalEvent<FuzzboComponent, ExaminedEvent>(OnFuzzboExamine);
     }
 
     /// <summary>
@@ -44,27 +43,6 @@ public sealed class FuzzboSystem : EntitySystem
         {
             _audio.PlayPredicted(ent.Comp.KeyInsertionSound, args.Target, args.User);
             args.Handled = true;
-            return;
-        }
-    }
-
-    private void OnFuzzboExamine(Entity<FuzzboComponent> ent, ref ExaminedEvent args)
-    {
-        if (!ent.Comp.Initialized)
-            return;
-
-        if (!args.IsInDetailsRange)
-            return;
-
-        if (ent.Comp.KeyContainer.ContainedEntities.Count == 0)
-        {
-            args.PushMarkup(Loc.GetString("encryption-keys-no-keys"));
-            return;
-        }
-
-        if (ent.Comp.KeyContainer.ContainedEntities.Count > 0)
-        {
-            args.PushMarkup(Loc.GetString("encryption-keys-some-keys"));
             return;
         }
     }
