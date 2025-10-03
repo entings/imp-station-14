@@ -1,0 +1,157 @@
+- type: entity
+  id: VirusInjectionBase
+  abstract: true
+  components:
+  - type: PointLight
+    radius: 1.3
+    energy: 2.5
+    castShadows: false
+
+- type: entity
+  parent: VirusInjectionBase
+  id: VirusInjectionMild
+  components:
+  - type: StatusEffect
+    effectsTable: !type:NestedSelector
+      tableId: SymptomTable
+      rolls: !type:RangeNumberSelector
+        range: 1, 2
+  - type: EntitySpawnAnomaly
+    entries:
+    - settings:
+        spawnOnPulse: true
+        minAmount: 0
+        maxAmount: 1
+        maxRange: 2
+      spawns:
+      - VirusInjectorMild
+
+- type: entityTable
+  id: SymptomTable
+  table: !type:GroupSelector
+    children:
+    - id: StatusEffectBloodloss
+    - id: StatusEffectDrowsiness
+    - id: StatusEffectWoozy
+    - id: StatusEffectDrunk
+    - id: StatusEffectStutter
+    - id: StatusEffectSlurred
+    - id: StatusEffectStunned
+    - id: StatusEffectJitter
+    - id: StatusEffectScrambled
+#    - id: StatusEffectAdjustTemperature
+    - id: StatusEffectElectrocuted
+    - id: StatusEffectSeeingRainbow
+#    - id: StatusEffectVomit
+    - id: StatusEffectFrench
+    - id: StatusEffectBlindness
+    - id: StatusEffectPacified
+    - id: StatusEffectMuted
+    - id: StatusEffectGray
+    - id: StatusEffectPG
+    - id: StatusEffectPositivity
+    - id: StatusEffectRatvarian
+    - id: StatusEffectStaminaLow
+
+- type: entity
+  id: StatusEffectJitter
+  parent: MobStatusEffectDebuff
+  components:
+  - type: Jittering
+    amplitude: 5
+    frequency: 10
+
+- type: entity
+  id: StatusEffectScrambled
+  parent: MobStatusEffectDebuff
+  components:
+  - type: ScrambledAccent
+
+- type: entity
+  id: StatusEffectFrench
+  parent: MobStatusEffectDebuff
+  components:
+  - type: FrenchAccent
+
+- type: entity
+  id: StatusEffectElectrocuted
+  parent: MobStatusEffectDebuff
+  components:
+  - type: Electrocuted
+
+- type: entity
+  id: StatusEffectPacified
+  parent: MobStatusEffectDebuff
+  components:
+  - type: Pacified
+
+- type: entity
+  id: StatusEffectRatvarian
+  parent: MobStatusEffectDebuff
+  components:
+  - type: RatvarianLanguage
+
+- type: entity
+  id: StatusEffectMuted
+  parent: MobStatusEffectDebuff
+  components:
+  - type: Muted
+
+- type: entity
+  id: StatusEffectBlindness
+  parent: MobStatusEffectDebuff
+  components:
+  - type: TemporaryBlindness
+
+- type: entity
+  id: StatusEffectPG
+  parent: MobStatusEffectDebuff
+  components:
+  - type: PGAccent
+
+- type: entity
+  id: StatusEffectPositivity
+  parent: MobStatusEffectDebuff
+  components:
+  - type: RelentlessPositivity
+
+- type: entity
+  id: StatusEffectGray
+  parent: MobStatusEffectDebuff
+  components:
+  - type: GrayAccent
+
+- type: entity
+  id: StatusEffectStamina
+  parent: MobStatusEffectDebuff
+  components:
+  - type: StaminaModifier
+
+#- type: entity
+#  id: StatusEffectVomit
+#  parent: MobStatusEffectDebuff
+#  components:
+#    effects:
+#    - !type:ChemVomit
+#      probability: 0.25
+
+#- type: entity
+#  id: StatusEffectAdjustTemperature
+#  parent: MobStatusEffectDebuff
+#  components:
+#    effects:
+#    - !type:AdjustTemperature
+#      conditions:
+#      - !type:Temperature
+#        max: 293.15
+#      amount: 100000 # thermal energy, not temperature!
+#    - !type:AdjustTemperature
+#      conditions:
+#      - !type:Temperature
+#        min: 293.15
+#      amount: -10000
+#    - !type:PopupMessage
+#      type: Local
+#      visualType: Medium
+#      messages: [ "leporazine-effect-temperature-adjusting" ]
+#      probability: 0.2

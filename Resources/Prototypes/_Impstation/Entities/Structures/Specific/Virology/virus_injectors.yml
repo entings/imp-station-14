@@ -1,0 +1,34 @@
+- type: entity
+  name: virus injector
+  parent: MarkerBase
+  id: VirusInjectorBase
+  abstract: true
+  components:
+  - type: Physics
+    bodyType: Static
+    fixedRotation: true
+  - type: Fixtures
+    fixtures:
+      anom:
+        shape:
+          !type:PhysShapeCircle
+          radius: 2.27 # i love 27
+        hard: false
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: InnerBodyAnomalyInjector
+    whitelist:
+      tags:
+      - AnomalyHost
+
+- type: entity
+  name: mild virus injector
+  parent: VirusInjectorBase
+  id: VirusInjectorMild
+  components:
+  - type: InnerBodyAnomalyInjector
+    injectionComponents:
+      - type: InnerBodyAnomaly
+        injectionProto: VirusInjectionMild

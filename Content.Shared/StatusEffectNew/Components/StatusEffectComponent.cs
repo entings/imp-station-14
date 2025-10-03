@@ -1,3 +1,4 @@
+using Content.Shared.EntityTable.EntitySelectors;   //IMP ADDITION
 using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -37,4 +38,13 @@ public sealed partial class StatusEffectComponent : Component
     /// </summary>
     [DataField]
     public EntityWhitelist? Blacklist;
+
+    /// <summary>
+    /// Effects that can be randomly chosen from a list.    \\IMP ADDITION
+    /// </summary>
+    [DataField]
+    public EntityTableSelector EffectsTable = new NestedSelector
+    {
+        TableId = "SymptomTable"
+    };
 }

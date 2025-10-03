@@ -1,0 +1,9 @@
+- type: entity
+  id: RandomVirusSpawner
+  name: random virus spawner
+  parent: MarkerBase
+  components:
+  - type: RandomSpawner
+    chance: 1
+    prototypes:
+    - VirusInjectorMild

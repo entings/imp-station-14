@@ -353,7 +353,7 @@
       collection: DeathGasp
 
 - type: emoteSounds
-  id: MaleArachnid
+  id: FemaleArachnid
   params:
     variation: 0.125
   sounds:
