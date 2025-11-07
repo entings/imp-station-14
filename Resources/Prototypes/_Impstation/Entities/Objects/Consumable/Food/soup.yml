@@ -95,3 +95,31 @@
     - jungle
     - banana
     - metallic
+
+- type: entity
+  name: oint meal
+  parent: FoodBowlBase
+  id: FoodOintMeal
+  description: A nice bowl of oint meal.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - oats
+      - aloe
+  - type: Sprite
+    sprite: _Impstation/Objects/Consumable/Food/bowl.rsi
+    layers:
+    - state: bowl
+    - state: oint_meal
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: Aloe
+          Quantity: 3
+  - type: Tag
+    tags:
+    - UnguFood

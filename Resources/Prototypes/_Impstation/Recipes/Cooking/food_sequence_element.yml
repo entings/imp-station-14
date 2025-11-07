@@ -344,3 +344,10 @@
   sprites:
   - sprite: _Impstation/Objects/Consumable/Food/Ingredients/stringcheese.rsi
     state: burger
+
+- type: foodSequenceElement
+  id: OintMentBurger
+  name: food-sequence-burger-content-ointment
+  sprites:
+  - sprite: _Impstation/Mobs/Animals/oint_ment.rsi
+    state: crit

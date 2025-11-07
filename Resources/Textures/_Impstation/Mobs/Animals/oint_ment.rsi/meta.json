@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "license": "CC-BY-SA-3.0",
+  "copyright": "sprites by NothBee for Impstation",
+  "states": [
+    {
+      "name": "alive",
+      "directions": 4
+    },
+        {
+      "name": "crit",
+      "delays": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "name": "dead",
+      "delays": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "name": "icon"
+    }
+  ]
+}

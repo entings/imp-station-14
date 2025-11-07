@@ -586,3 +586,17 @@
     FoodBanana: 1
     MonkeyCubeSanitized: 1
   recipeType: Oven # Frontier
+
+- type: microwaveMealRecipe
+  id: RecipeOintMeal
+  name: ointmeal recipe
+  result: FoodOintMeal
+  time: 15
+  group: Savory
+  reagents:
+    Oats: 10
+    Water: 5
+  solids:
+    FoodBowlBig: 1
+    MobOintMent: 1
+  recipeType: Microwave
