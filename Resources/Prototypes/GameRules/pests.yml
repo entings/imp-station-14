@@ -11,6 +11,7 @@
     - id: SingleCritter # imp special
     - id: CorpseEjectedFromVents # imp
     - id: PleebnarMigration #imp
+    - id: OintMentMigration # imp
 
 - type: entityTable
   id: SpicyPestEventsTable

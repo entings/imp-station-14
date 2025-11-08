@@ -36,3 +36,20 @@
       chance: 0.9
       minimumEntitiesSpawned: 10
       maximumEntitiesSpawned: 15
+
+- type: entity
+  name: Oint Ment Spawner
+  id: OintMentSpawner
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Impstation/Mobs/Animals/oint_ment.rsi
+          state: alive
+    - type: ClusterSpawner
+      prototypes:
+        - MobOintMent
+      chance: 0.9
+      minimumEntitiesSpawned: 8
+      maximumEntitiesSpawned: 10

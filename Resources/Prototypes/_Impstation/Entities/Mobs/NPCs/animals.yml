@@ -611,8 +611,9 @@
     - type: MobMover
     - type: HTN
       rootTask:
-        task: IdleCompound
+        task: KisserTomatoCompound
     - type: NPCImprintingOnSpawnBehaviour
+      follow: true
     - type: Fixtures
       fixtures:
         fix1:
@@ -653,7 +654,7 @@
         path: "/Audio/Voice/Slime/slime_squish.ogg"
       damage:
         types:
-          Blunt: 1
+          Heat: 1
     - type: Butcherable
       spawned:
       - id: FoodMeatSlime
@@ -688,7 +689,6 @@
     - type: Bloodstream
       bloodMaxVolume: 10
       bloodReagent: Aloe
-    - type: NoSlip
     - type: ZombieImmune
     - type: Food
     - type: GoobAbsorbable # small

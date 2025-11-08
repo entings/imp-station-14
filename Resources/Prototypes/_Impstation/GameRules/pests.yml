@@ -65,6 +65,18 @@
       prob: 0.05
 
 - type: entity
+  name: Oint Ment Spawner
+  id: OintMentMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    weight: 1
+  - type: VentCrittersRule
+    entries:
+    - id: OintMentSpawner
+      prob: 0.05
+
+- type: entity
   id: PleebnarMigration
   parent: BaseStationEventShortDelay
   components:
